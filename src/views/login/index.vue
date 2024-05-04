@@ -73,9 +73,9 @@ function userLogin() {
 		width: 300px;
 		text-align: center;
 		flex-direction: column;
-
 		.login-info {
 			height: max-content;
+			margin-top: 10px;
 		}
 	}
 }
