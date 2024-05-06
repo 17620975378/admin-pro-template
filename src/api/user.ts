@@ -13,7 +13,7 @@ export type LoginResponse = {
 	roles: string[];
 	accessToken: string;
 };
-// 定义的接口
+// 登录请求
 export const userLogin = async (data?: LoginRequest) => {
 	return post<LoginResponse>({}, '/login', data);
 };
@@ -22,6 +22,7 @@ export const refreshUserInfo = async (data?: reLoginRequest) => {
 	return post<LoginResponse>({}, '/getUserInfo', data);
 };
 
-export const getUserList = async (data) => {
-	return get({}, '/getUserList', data);
+// 获取用户列表
+export const getUserList = async () => {
+	return get({}, '/getUserList');
 };

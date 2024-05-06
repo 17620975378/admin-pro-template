@@ -32,6 +32,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 			viteMockServe({
 				// 如果接口为 /mock/xxx 以 mock 开头就会被拦截响应配置的内容
 				mockPath: 'mock', // 数据模拟需要拦截的请求起始 URL
+				// localEnabled: true, // 是否开启本地 mock 服务
 				enable: true // 本地环境是否开启 mock 功能
 			}),
 			// 开启ElementPlus自动引入CSS
