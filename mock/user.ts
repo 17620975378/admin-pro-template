@@ -55,6 +55,10 @@ export default [
 						userName: '大伟',
 						role: [
 							{
+								role: 0,
+								roleName: '超级管理员'
+							},
+							{
 								role: 1,
 								roleName: '管理员'
 							},
@@ -72,6 +76,10 @@ export default [
 							{
 								role: 1,
 								roleName: '管理员'
+							},
+							{
+								role: 2,
+								roleName: '普通用户'
 							}
 						]
 					},
