@@ -20,8 +20,10 @@
 </template>
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { getRoleList } from '@/api/role';
 import { ElMessageBox, ElMessage } from 'element-plus';
+const router = useRouter();
 // 角色接口
 interface IRole {
 	roleId: number;
@@ -43,7 +45,8 @@ const onAddRole = () => {
 		.then(({ value }) => {
 			roleList.value.push({
 				roleId: roleList.value.length + 1,
-				roleName: value
+				roleName: value,
+				authority: []
 			});
 			ElMessage({
 				type: 'success',
@@ -58,7 +61,15 @@ const onAddRole = () => {
 		});
 };
 // 修改权限
-const onChangeAuth = (row) => {};
+const onChangeAuth = (row) => {
+	router.push({
+		path: '/auth',
+		query: {
+			roleId: row.roleId,
+			authList: row.authority
+		}
+	});
+};
 </script>
 <style lang="less" scoped>
 /deep/.form-box {
