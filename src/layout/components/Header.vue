@@ -1,6 +1,6 @@
 <template>
 	<div class="header-box">
-		<div class="logo-box">logo区域</div>
+		<div class="logo-box" style="cursor: pointer" @click="handlerBackToHome">logo区域</div>
 		<div class="flex-grow"></div>
 		<div class="user-box"><i-ep-user style="vertical-align: middle" /> {{ userName }}</div>
 		<div class="setting-box setting" @click="handleDrawer">
@@ -21,6 +21,7 @@
 import { ref } from 'vue';
 import { useUserStore } from '@/store/user';
 import router from '@/router';
+
 const userStore = useUserStore();
 const userName = userStore.username;
 const isDrawer = ref(false);
@@ -38,6 +39,9 @@ const closeDrawer = () => {
 const logout = () => {
 	sessionStorage.removeItem('userInfo');
 	router.push('/login');
+};
+const handlerBackToHome = () => {
+	router.push('/');
 };
 </script>
 <style lang="less" scoped>

@@ -25,16 +25,18 @@
 			</el-form-item>
 		</el-form>
 		<el-table :data="userList" style="width: 100%" border class="content-table">
-			<el-table-column label="编号" prop="id" width="180"></el-table-column>
-			<el-table-column label="用户名称" prop="nickName" width="180"></el-table-column>
+			<el-table-column label="编号" prop="id" width="100"></el-table-column>
+			<el-table-column label="用户名称" prop="nickName" width="160"></el-table-column>
 			<el-table-column label="用户角色" prop="role">
 				<template #default="scope">
+					<!-- 使用计算属性或方法来生成带有顿号的角色名称字符串 -->
+					<!-- <span>{{ scope.row.role.map((item) => item.roleName).join('、') }}</span> -->
 					<el-button v-for="item in scope.row.role" :key="item.role" type="primary" size="small">
 						{{ item.roleName }}
 					</el-button>
 				</template>
 			</el-table-column>
-			<el-table-column label="操作" width="180" align="center">
+			<el-table-column label="操作" width="160" align="center">
 				<template #default="scope">
 					<el-button type="primary" size="small" @click="onEditUserIsOpen(scope.row)">编辑</el-button>
 				</template>

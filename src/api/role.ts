@@ -1,6 +1,14 @@
-import { get } from '@/utils/request';
+// import { get } from '@/utils/request';
+
+// export const getRoleList = () => {
+// 	return get({}, '/getRole');
+// };
 
 // 获取角色列表
-export const getRoleList = () => {
-	return get({}, '/getRole');
-};
+import service from '@/utils/request';
+export function getRoleList() {
+	return service({
+		url: '/getRole',
+		method: 'get'
+	});
+}

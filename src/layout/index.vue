@@ -24,6 +24,7 @@
 	</div>
 </template>
 <script lang="ts" setup>
+import { watch, ref } from 'vue';
 import Header from './components/Header.vue';
 import { useRoute, useRouter } from 'vue-router';
 const router = useRouter();
@@ -31,7 +32,14 @@ const route = useRoute();
 const menuList = router.getRoutes().filter((route) => {
 	return route.meta.isShow;
 });
-const activeMenu = route.path;
+const activeMenu = ref('');
+activeMenu.value = route.path;
+watch(
+	() => route.path,
+	(newPath, oldPath) => {
+		activeMenu.value = newPath;
+	}
+);
 </script>
 <style lang="less" scoped>
 .common-layout {
