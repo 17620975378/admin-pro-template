@@ -55,15 +55,15 @@ export default [
 						userName: '大伟',
 						role: [
 							{
-								role: 0,
+								role: 1,
 								roleName: '超级管理员'
 							},
 							{
-								role: 1,
+								role: 2,
 								roleName: '管理员'
 							},
 							{
-								role: 2,
+								role: 3,
 								roleName: '普通用户'
 							}
 						]
@@ -74,11 +74,11 @@ export default [
 						userName: '张三',
 						role: [
 							{
-								role: 1,
+								role: 2,
 								roleName: '管理员'
 							},
 							{
-								role: 2,
+								role: 3,
 								roleName: '普通用户'
 							}
 						]
@@ -89,7 +89,7 @@ export default [
 						userName: '李四',
 						role: [
 							{
-								role: 1,
+								role: 2,
 								roleName: '管理员'
 							}
 						]
@@ -100,7 +100,7 @@ export default [
 						userName: '王五',
 						role: [
 							{
-								role: 2,
+								role: 3,
 								roleName: '普通用户'
 							}
 						]
@@ -111,7 +111,7 @@ export default [
 						userName: '赵六',
 						role: [
 							{
-								role: 2,
+								role: 3,
 								roleName: '普通用户'
 							}
 						]
