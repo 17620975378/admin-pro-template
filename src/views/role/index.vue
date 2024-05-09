@@ -10,7 +10,12 @@
 			<el-table-column label="角色名称" prop="roleName" width="180px"></el-table-column>
 			<el-table-column label="操作">
 				<template #default="scope">
-					<el-button style="width: 60px" type="primary" size="small" @click="onChangeAuth(scope.row)"
+					<el-button
+						style="width: 60px"
+						type="primary"
+						:text="true"
+						size="small"
+						@click="onChangeAuth(scope.row)"
 						>修改权限</el-button
 					>
 				</template>
@@ -28,6 +33,7 @@ const router = useRouter();
 interface IRole {
 	roleId: number;
 	roleName: string;
+	authority: string[];
 }
 // 角色列表
 const roleList = ref<IRole[]>([]);

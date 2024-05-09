@@ -1,6 +1,6 @@
 <template>
 	<div class="wrap-content">
-		<h1>Vite+Vue3+TypeScript+Element-Plus企业中台最佳实践</h1>
+		<h1>child3</h1>
 	</div>
 </template>
 <script lang="ts" setup></script>
