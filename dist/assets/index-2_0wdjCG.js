@@ -1,0 +1,1 @@
+import{_ as t}from"./index-6XxPr3PP.js";import{o as c,c as o,p as s,a,b as d}from"./vendor-CjuydzvB.js";const _={},n=e=>(s("data-v-e94db2cd"),e=e(),a(),e),p={class:"wrap-content"},r=n(()=>d("h1",null,"Vite+Vue3+TypeScript+Element-Plus企业中台最佳实践",-1)),i=[r];function l(e,f){return c(),o("div",p,i)}const u=t(_,[["render",l],["__scopeId","data-v-e94db2cd"]]);export{u as default};

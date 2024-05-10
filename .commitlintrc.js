@@ -1,8 +1,8 @@
 module.exports = {
-	ignores: [(commit) => commit.includes('init')], // 忽略init提交
-	extends: ['@commitlint/config-conventional'], // 默认的规则
+	ignores: [(commit) => commit.includes('init')],
+	extends: ['@commitlint/config-conventional'],
 	rules: {
-		// 信息以空格开头
+		// 信息以空格开头,描述前面要加空格
 		'body-leading-blank': [2, 'always'],
 		'footer-leading-blank': [2, 'always'],
 		// 信息最大长度

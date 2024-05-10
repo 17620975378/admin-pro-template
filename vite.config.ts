@@ -1,5 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import { viteMockServe } from 'vite-plugin-mock';
+import externalGlobals from 'rollup-plugin-external-globals';
+import { visualizer } from 'rollup-plugin-visualizer';
 import type { UserConfig, ConfigEnv } from 'vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Icons from 'unplugin-icons/vite';
@@ -10,6 +12,16 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { fileURLToPath } from 'url';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import ViteCompression from 'vite-plugin-compression';
+
+// 不让这些库被打包进最终的代码中
+const globals = externalGlobals({
+	moment: 'moment',
+	'video.js': 'videojs',
+	jspdf: 'jspdf',
+	xlsx: 'XLSX',
+	echart: 'echart'
+});
 
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 	// 获取当前工作目录
@@ -31,6 +43,12 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 		publicDir: fileURLToPath(new URL('./public', import.meta.url)), // 无需处理的静态资源位置
 		assetsInclude: fileURLToPath(new URL('./src/assets', import.meta.url)), // 需要处理的静态资源位置
 		plugins: [
+			// 开启压缩,可选 gzip 或 brotliCompress(br) 压缩，ext后缀也要记得改
+			ViteCompression({
+				threshold: 1024 * 20, // 超过20kb才进行压缩
+				ext: '.gz', // 压缩后缀
+				algorithm: 'gzip' // 压缩算法，默认 gzip，可选 [ 'gzip' , 'brotliCompress' ,'deflate' , 'deflateRaw']
+			}),
 			// Vue模板文件编译插件
 			vue(),
 			// jsx文件编译插件
@@ -103,12 +121,32 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 				input: {
 					index: fileURLToPath(new URL('./index.html', import.meta.url))
 				},
-				// 静态资源分类打包
+				experimentalLogSideEffects: true, // 打包时记录哪些模块会触发副作用
+				external: ['moment', 'video.js', 'jspdf', 'xlsx', 'echart'], // 打包时排除的依赖
+				plugins: [visualizer({ open: true }), globals],
+				treeshake: {
+					// 开启 tree-shaking
+					preset: 'recommended' // 一般使用recommended
+				},
 				output: {
-					format: 'esm',
-					chunkFileNames: 'static/js/[name]-[hash].js',
-					entryFileNames: 'static/js/[name]-[hash].js',
-					assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+					experimentalMinChunkSize: 20 * 1024, // 单位是B，这里表示将小于20kb的文件合并到同一个chunk中
+					// manualChunks：用于手动控制代码分割和打包方式的一个配置选项
+					// 这种配置方式，可以极大的减少chunk数量，但同时会导致vendor文件过大，导致加载时间过长
+					manualChunks: (id) => {
+						// 当html-canvas只有极少数页面使用的时候，可以将第三方库分类打包，从而实现按需加载
+						if (id.includes('html-canvas')) {
+							return 'html-canvas';
+						}
+						if (id.includes('node_modules')) {
+							return 'vendor';
+						}
+						// return 'index'; // 业务代码
+					}
+					// hash后面可以加 :数字，表示hash长度，[name] 可以改为文件名，比如chunk
+					// chunkFileNames: 'static/js/chunk-[hash:6].js'
+					// chunkFileNames: 'static/js/[name]-[hash].js', // 配置代码分割后文件名
+					// entryFileNames: 'static/js/[name]-[hash].js', // 配置入口文件名，只有一个
+					// assetFileNames: 'static/[ext]/[name]-[hash].[ext]' // 配置静态资源文件名
 				}
 			}
 		},

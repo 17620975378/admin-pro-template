@@ -13,4 +13,14 @@
 		<!-- 引入main.ts文件 -->
 		<script type="module" src="/src/main.ts"></script>
 	</body>
+	<!-- 外链引入一些第三方包，这样就不用打包进最终代码了 -->
+	<!-- 自动外链写法 -->
+	<!-- <%- monentscript %> <%- videoscript %> <%- echartscript %> <%- jspdfscript %> <%- xlsxscript %> -->
+
+	<!-- 手动添加外链连接 -->
+	<!-- <script src="https://.../moment.min.js"></script>
+    <script src="https://.../xlsx.full.min.js"></script>
+    <script src="https://.../jspdf.polyfills.umd.js"></script>
+    <script src="https://.../jspdf.umd.min.js"></script>
+    <script src="https://.../video.min.js"></script> -->
 </html>

@@ -1,0 +1,1 @@
+import{_ as o}from"./index-6XxPr3PP.js";import{o as c,c as t,p as s,a,b as _}from"./vendor-CjuydzvB.js";const d={},n=e=>(s("data-v-91066020"),e=e(),a(),e),r={class:"wrap-content"},p=n(()=>_("h1",null,"child1",-1)),i=[p];function h(e,l){return c(),t("div",r,i)}const u=o(d,[["render",h],["__scopeId","data-v-91066020"]]);export{u as default};
