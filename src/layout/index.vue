@@ -55,7 +55,7 @@ import { useSettingStore } from '@/store/setting';
 const router = useRouter();
 const route = useRoute();
 const settingStore = useSettingStore();
-console.log(settingStore);
+// console.log(settingStore);
 // console.log(router.options.routes[0].children);
 // const menuList = router.getRoutes().filter((route) => {
 // 	return route.meta.isShow;

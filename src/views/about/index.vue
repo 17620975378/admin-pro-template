@@ -1,6 +1,6 @@
 <template>
 	<div class="wrap-about">
-		<!-- Hello about -->
+		<div class="text-box">Hello about</div>
 		<tag :text="text" :theme="theme"></tag>
 		<tag :text="text1" :theme="theme1"></tag>
 		<tag :text="text2" :theme="theme2"></tag>
@@ -21,5 +21,8 @@ const theme2 = ref('');
 	display: flex;
 	// background-color: @bg;
 	color: var(--dawei-bg);
+	.text-box {
+		background-color: @bg; //在variable.less中定义了@bg
+	}
 }
 </style>
