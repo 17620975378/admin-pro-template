@@ -15,31 +15,60 @@ export default {
 			meta: {
 				title: '首页',
 				isShow: true,
-				parentNode: 'Layout',
-				parentNodeName: '首页'
+				parentNode: 'Layout'
 			}
 		},
 		{
 			path: '/child1',
 			name: 'MenuPage',
-			redirect: '/child1',
+			redirect: '/infoPage1',
 			meta: {
 				title: '主菜单',
 				isShow: true,
-				parentNode: 'Layout',
-				parentNodeName: '首页'
+				parentNode: 'Layout'
 			},
 			children: [
 				{
-					path: '/child1',
+					path: '/infoPage1',
 					name: 'ChildPage1',
+					redirect: '/infoPage1',
 					component: () => import('@/views/parent/child1/index.vue'),
 					meta: {
 						title: '子菜单1',
-						isShow: true,
-						parentNode: 'MenuPage',
-						parentNodeName: '主菜单'
-					}
+						parentNode: 'MenuPage'
+					},
+					children: [
+						{
+							path: '/infoPage1',
+							name: 'InfoPage1',
+							component: () => import('@/views/parent/child1/component/InfoPage1.vue'),
+							meta: {
+								title: '信息页1',
+								isShow: true,
+								parentNode: 'ChildPage1'
+							}
+						},
+						{
+							path: '/infoPage2',
+							name: 'InfoPage2',
+							component: () => import('@/views/parent/child1/component/InfoPage2.vue'),
+							meta: {
+								title: '信息页2',
+								isShow: true,
+								parentNode: 'ChildPage1'
+							}
+						},
+						{
+							path: '/infoPage3',
+							name: 'InfoPage3',
+							component: () => import('@/views/parent/child1/component/InfoPage3.vue'),
+							meta: {
+								title: '信息页3',
+								isShow: true,
+								parentNode: 'ChildPage1'
+							}
+						}
+					]
 				},
 				{
 					path: '/child2',
@@ -48,8 +77,7 @@ export default {
 					meta: {
 						title: '子菜单2',
 						isShow: true,
-						parentNode: 'MenuPage',
-						parentNodeName: '主菜单'
+						parentNode: 'MenuPage'
 					}
 				},
 				{
@@ -59,8 +87,7 @@ export default {
 					meta: {
 						title: '子菜单3',
 						isShow: true,
-						parentNode: 'MenuPage',
-						parentNodeName: '主菜单'
+						parentNode: 'MenuPage'
 					}
 				}
 			]
@@ -72,8 +99,7 @@ export default {
 			meta: {
 				title: '项目介绍',
 				isShow: true,
-				parentNode: 'Layout',
-				parentNodeName: '首页'
+				parentNode: 'Layout'
 			}
 		},
 		{
@@ -83,8 +109,7 @@ export default {
 			meta: {
 				title: '用户列表',
 				isShow: true,
-				parentNode: 'Layout',
-				parentNodeName: '首页'
+				parentNode: 'Layout'
 			}
 		},
 		{
@@ -94,8 +119,7 @@ export default {
 			meta: {
 				title: '角色列表',
 				isShow: true,
-				parentNode: 'Layout',
-				parentNodeName: '首页'
+				parentNode: 'Layout'
 			}
 		},
 		{
@@ -105,8 +129,7 @@ export default {
 			meta: {
 				title: '权限模块',
 				isShow: true,
-				parentNode: 'Layout',
-				parentNodeName: '首页'
+				parentNode: 'Layout'
 			}
 		}
 	]

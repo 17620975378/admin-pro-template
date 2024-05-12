@@ -69,7 +69,7 @@ const getTitle = (name: string) => {
 };
 const handlerRouter = (name: string) => {
 	const newTitles = getTitle(name);
-	console.log(newTitles, 'newTitles');
+	// console.log(newTitles, 'newTitles');
 	settingStore.setTitle(newTitles);
 };
 // 路由守卫

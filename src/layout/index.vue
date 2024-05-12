@@ -47,7 +47,7 @@
 	</div>
 </template>
 <script lang="ts" setup>
-import { watch, ref } from 'vue';
+import { watch, ref, onMounted } from 'vue';
 import { ArrowRight } from '@element-plus/icons-vue';
 import Header from './components/Header.vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -63,12 +63,22 @@ const settingStore = useSettingStore();
 const menuList = router.options.routes[0].children?.filter((route) => {
 	return route.meta!.isShow;
 });
+const specalList = ['/infoPage1', '/infoPage2', '/infoPage3'];
+onMounted(() => {
+	if (specalList.includes(route.path)) {
+		activeMenu.value = specalList[0];
+	}
+});
 const activeMenu = ref('');
 activeMenu.value = route.path;
 watch(
 	() => route.path,
 	(newPath) => {
-		activeMenu.value = newPath;
+		if (specalList.includes(route.path)) {
+			activeMenu.value = specalList[0];
+		} else {
+			activeMenu.value = newPath;
+		}
 	}
 );
 </script>
