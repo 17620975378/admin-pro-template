@@ -21,6 +21,7 @@
 			:total="projectData.dataCount"
 			:page-size="projectData.pageSize"
 			:page-sizes="[5, 10, 20]"
+			:current-page="projectData.currentPage"
 			@size-change="onSizeChange"
 			@current-change="onCurrentChange"
 		></el-pagination>
@@ -57,7 +58,6 @@ let projectData = reactive({
 });
 // 查询项目列表
 const onSearchGoods = () => {
-	console.log(projectList.value);
 	let res: IProject[] = [];
 	if (projectData.title || projectData.introduce) {
 		if (projectData.title) {

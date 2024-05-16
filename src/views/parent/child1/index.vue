@@ -29,13 +29,14 @@ const menuList = routeObj!.children[0].children?.filter((item) => {
 });
 const activeName = ref('');
 activeName.value = route.path;
-// watch(
-// 	() => route.path,
-// 	(newPath) => {
-// 		activeName.value = newPath;
-// 	}
-// );
-// console.log(route.path, 'route.path');
+watch(
+	() => route.path,
+	(newPath) => {
+		activeName.value = newPath;
+		// console.log(newPath, 'route.path');
+	}
+);
+
 const handleClick = (tab) => {
 	router.push(tab.props.name);
 	// console.log(tab.props.name, 'tab.props.name');

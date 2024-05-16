@@ -33,7 +33,7 @@ import { User, Lock } from '@element-plus/icons-vue';
 import { useUserStore } from '@/store/user';
 const userStore = useUserStore();
 const router = useRouter();
-console.log(userStore);
+// console.log(userStore, 'userStore');
 const userInfo = reactive({
 	username: 'admin',
 	password: 'admin'

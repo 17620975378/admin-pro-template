@@ -3,6 +3,7 @@ import { useSettingStore } from '@/store/setting';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 const settingStore = useSettingStore();
+// console.log(settingStore, 'settingStore');
 // 配置路由
 // const routes: Array<RouteRecordRaw> = [
 //     {
